@@ -103,7 +103,7 @@ const getDogPic = async () => {
     // await writeFilePro('dog-img.txt', res.body.message);
     // console.log('Random dog image saved to file!');
 
-    // Waiting for multiple promises simultaneously ----------
+    // ############ Waiting for multiple promises simultaneously #############
 
     // without await keyword it will simply save the promise to the variable and not it's resolved value.
 
@@ -116,6 +116,7 @@ const getDogPic = async () => {
     const res3Pro = superagent.get(
       `https://dog.ceo/api/breed/${data}/images/random`
     );
+
     const all = await Promise.all([res1Pro, res2Pro, res3Pro]);
     const imgs = all.map((el) => el.body.message);
     console.log(imgs);
@@ -130,6 +131,8 @@ const getDogPic = async () => {
   return '2: READY 🐶';
 };
 
+// ############### async-await pattern to consume promise ###############
+// ########## using IIFE ############
 (async () => {
   try {
     console.log('1: Will get dog pics!');
@@ -141,6 +144,7 @@ const getDogPic = async () => {
   }
 })();
 
+// ############### then-catch pattern to consume promise ###############
 /*
 console.log('1: Will get dog pics!');
 getDogPic()
